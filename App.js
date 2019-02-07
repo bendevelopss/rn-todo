@@ -1,6 +1,6 @@
 <script src="http://localhost:8097" />;
 import React, { Component } from "react";
-import { View, Text, Button, icon } from "react-native";
+import { View, Text, Button } from "react-native";
 // import Root from "./screens/root";
 import {
   createSwitchNavigator,
@@ -40,18 +40,16 @@ export default App;
 class WelcomeScreen extends Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Button
           title="Login"
-          onPress={() => this.props.navigation.push('Dashboard')}
+          onPress={() => this.props.navigation.push("Dashboard")}
         />
-        <Button title="Sign Up" onPress={() => alert('button pressed')} />
+        <Button title="Sign Up" onPress={() => alert("button pressed")} />
       </View>
     );
   }
 }
-
-
 
 // const DashboardTabNavigator = createBottomTabNavigator(
 //   {
@@ -92,14 +90,15 @@ const DashboardStackNavigator = createStackNavigator(
 
 const AppDrawerNavigator = createDrawerNavigator(
   {
-    Home: HomeScreen
+    Home: { screen: DashboardStackNavigator }
   },
   { backBehavior: "yes" } //drawer options
 );
 
 const AppSwitchNavigator = createSwitchNavigator({
   Dashboard: { screen: LoginScreen },
-  Register: { screen: RegisterScreen }
+  Register: { screen: RegisterScreen },
+  Home: { screen: AppDrawerNavigator }
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);

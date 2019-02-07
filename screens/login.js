@@ -69,6 +69,7 @@ export default class LoginScreen extends Component {
       if (response) {
         await AsyncStorage.setItem("token", response);
         await this.setState({ showProgress: false });
+        await this.props.navigation.navigate('Home')
       }
       console.log(1, AsyncStorage.getItem("token"));
     } catch (err) {
